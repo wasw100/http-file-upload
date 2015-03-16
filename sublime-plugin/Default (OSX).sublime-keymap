@@ -1,0 +1,5 @@
+[
+    { 
+        "keys": ["super+shift+u"], "command": "file_upload"
+    }
+]

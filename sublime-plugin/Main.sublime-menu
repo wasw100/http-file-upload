@@ -1,0 +1,56 @@
+[
+    {
+        "caption": "Preferences",
+        "mnemonic": "n",
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Package Settings",
+                "mnemonic": "P",
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "FileUpload",
+                        "children":
+                        [
+                            {
+                                "command": "open_file", 
+                                "args": {"file": "${packages}/FileUpload/FileUpload.sublime-settings"},
+                                "caption": "Settings – Default"
+                            },
+                            {
+                                "command": "open_file", 
+                                "args": {"file": "${packages}/User/FileUpload.sublime-settings"},
+                                "caption": "Settings – User"
+                            },
+                            { "caption": "-" }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "caption": "FileUpload",  
+        "children":  
+        [
+            {
+                "caption": "Upload",
+                "command": "file_upload"
+            },
+            {
+                "command": "open_file", 
+                "args": {"file": "${packages}/FileUpload/FileUpload.sublime-settings"},
+                "caption": "Settings – Default"
+            },
+            {
+                "command": "open_file", 
+                "args": {"file": "${packages}/User/FileUpload.sublime-settings"},
+                "caption": "Settings – User"
+            },
+            { "caption": "-" }
+        ] 
+    }
+]
