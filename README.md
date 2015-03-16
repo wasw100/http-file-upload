@@ -18,7 +18,7 @@
 
 - 如果使用supervisor启动
 
- 可以像下面配置(替换成自己的路径): file-upload-server.ini
+可以像下面配置(替换成自己的路径): file-upload-server.ini
 
     [program:file-upload-server]
     environment=PATH="/home/ubuntu/.virtualenvs/file-upload-server/bin/"
@@ -35,9 +35,11 @@
 - 复制upload-text.vim 到 $HOME/.vim/plugin/ 文件夹下
 
 
-## 插件配置, 对应配置好就可:
+## 插件配置
 
 - vim的配置, key是配置的一个名字, 随便起, 最下面可以设置快捷上传命令
+
+如下:
 
     'test'{
         'upload_url': 'http://{server ip}:{server port}/',
