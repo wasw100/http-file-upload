@@ -28,7 +28,7 @@
 
 ## sublime plugin
 
-- 复制到sublime插件文件夹
+- [FileUpload](https://github.com/wasw100/FileUpload)
 
 ## vim 插件
 
