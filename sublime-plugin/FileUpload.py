@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 import sublime
 import sublime_plugin
 import os.path
@@ -7,6 +8,7 @@ import threading
 import time
 import functools
 import zlib
+import urlparse
 import mimetypes
 import codecs
 try:
@@ -55,6 +57,7 @@ class FileUploadCommand(sublime_plugin.TextCommand):
             if config_key is not None:
                 upload_config = local_prefix[config_key]
                 upload_url = upload_config['upload_url']
+                upload_url = handle_url(upload_url)
                 local_prefix = os.path.realpath(config_key)
                 remote_prefix = upload_config['remote_prefix']
                 t = UploadThread(upload_url, file_name,
@@ -64,6 +67,14 @@ class FileUploadCommand(sublime_plugin.TextCommand):
                 msg = (u'没有匹配的配置文件, 可以ctrl+`在Console复制路径'
                        u'然后在FileUpload->Settings-User设置')
                 sublime.status_message(msg)
+
+
+def handle_url(url):
+    """如果url的path是'', 后面加上'/'"""
+    parsed = urlparse.urlparse(url)
+    if not parsed.path:
+        parsed = parsed._replace(path='/')
+    return parsed.geturl()
 
 
 def show_finish(url, remote_path, use_time):
@@ -100,6 +111,13 @@ class UploadThread(threading.Thread):
                 'Content-Type': content_type,
                 'Content-Length': str(len(body))
             }
+
+            # 如果需要代理, 将下面的注释去掉
+            # print self.upload_url
+            # proxy = urllib2.ProxyHandler({'http': '127.0.0.1:8888'})
+            # opener = urllib2.build_opener(proxy)
+            # urllib2.install_opener(opener)
+
             request = urllib2.Request(self.upload_url, body, headers)
             print(urllib2.urlopen(request).read())
 
