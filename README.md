@@ -32,7 +32,7 @@
 
 ## vim 插件
 
-- 复制upload-text.vim 到 $HOME/.vim/plugin/ 文件夹下
+- 复制file-upload.vim 到 $HOME/.vim/plugin/ 文件夹下
 
 
 ## 插件配置
