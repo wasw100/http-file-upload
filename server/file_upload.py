@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import zlib, os.path
+import zlib
+import os.path
 import logging
 from logging.handlers import RotatingFileHandler
 from flask import Flask, request
@@ -8,19 +9,20 @@ from flask import Flask, request
 app = Flask(__name__)
 app.debug = False
 
-#log to file
+# log to file
 app.logger.setLevel(logging.INFO)
 log_path = os.path.join(os.path.dirname(__file__), 'logs/web.log')
 handler = RotatingFileHandler(log_path, maxBytes=10*1024*1024, backupCount=1)
 handler.setLevel(logging.INFO)
-formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s'
+                              '- %(message)s')
 handler.setFormatter(formatter)
 app.logger.addHandler(handler)
 
 
 @app.before_request
 def before_request():
-    #可以做一些权限限制, 比如限制IP
+    # 可以做一些权限限制, 比如限制IP
     if not request.headers.getlist('X-Forwarded-For'):
         ip = request.remote_addr
     else:
