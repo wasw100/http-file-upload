@@ -62,6 +62,8 @@
 
 - 复制file-upload.vim 到 $HOME/.vim/plugin/ 文件夹下
 
+- .vimrc中可以添加如下配置提高上传体验: set cmdheight=2
+
 
 ## 插件配置
 

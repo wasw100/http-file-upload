@@ -97,7 +97,6 @@ def get_content_type(filename):
 def upload(conf_key, file_path, upload_url, local_prefix, remote_prefix):
     zlib_data = zlib.compress(open(file_path, 'rb').read(), 5)
     remote_path = os.path.join(remote_prefix, file_path[len(local_prefix)+1:]) 
-    print(remote_path)
 
     fields = [('path', remote_path)]
     files = [('file', 'tmp.txt', zlib_data)]
@@ -140,4 +139,4 @@ EOF
 
 endfunction
 
-command! -nargs=0 W call UploadText('test')
+command! -nargs=0 W call FileUpload('test')
